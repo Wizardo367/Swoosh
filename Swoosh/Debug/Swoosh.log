@@ -1,0 +1,4 @@
+﻿  Window.cpp
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\window.cpp(72): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
+  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

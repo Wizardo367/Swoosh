@@ -22,6 +22,7 @@ namespace Swoosh {
 				~Window();
 				// Functions
 				bool hasClosed();
+				GLFWwindow* getGLFWWindow();
 				// Methods
 				void clear();
 				void update();

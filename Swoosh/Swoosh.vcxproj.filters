@@ -10,6 +10,21 @@
     <Filter Include="Source\Framework\Graphics">
       <UniqueIdentifier>{f067275c-ba99-4779-8822-0493e8c0486d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Framework\Maths">
+      <UniqueIdentifier>{5f526f7f-095e-4865-9614-887ba43a6aff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Framework\Audio">
+      <UniqueIdentifier>{0615a7d1-8a02-4622-86f7-268ea9f2eb45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Framework\Input">
+      <UniqueIdentifier>{11d90b54-d5ca-4b71-ab11-a64fe4380d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Systems">
+      <UniqueIdentifier>{a8e3f4d9-56e9-4a37-95e5-5d8be96eec30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Messaging">
+      <UniqueIdentifier>{6ce20149-b4c3-4ac0-b8b7-e35323348a3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -18,10 +33,22 @@
     <ClCompile Include="Framework\Graphics\Window.cpp">
       <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Input\Keyboard.cpp">
+      <Filter>Source\Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Input\Mouse.cpp">
+      <Filter>Source\Framework\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Window.h">
       <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Input\Keyboard.h">
+      <Filter>Source\Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Input\Mouse.h">
+      <Filter>Source\Framework\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

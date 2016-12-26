@@ -72,6 +72,13 @@ namespace Swoosh {
 				return glfwWindowShouldClose(m_Window);
 			}
 
+
+			// Get GLFW window
+			GLFWwindow* Window::getGLFWWindow()
+			{
+				return m_Window;
+			}
+
 		}
 	}
 }

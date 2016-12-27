@@ -1,8 +1,8 @@
 #pragma once
 
+#include "glslprogram.h"
 #include <GLFW/glfw3.h>
 
-#include "glslprogram.h"
 #include "Camera.h"
 #include <vector>
 

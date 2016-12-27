@@ -1,2 +1,12 @@
-﻿  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
+﻿  Scene.cpp
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(71): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(72): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(74): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(77): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(78): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  Camera.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

@@ -25,6 +25,18 @@
     <Filter Include="Source\Messaging">
       <UniqueIdentifier>{6ce20149-b4c3-4ac0-b8b7-e35323348a3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Systems\Graphics">
+      <UniqueIdentifier>{da94291b-12b8-423b-815f-7fab5872c89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Systems\Graphics\Shaders">
+      <UniqueIdentifier>{9b6944b0-2f72-4548-8d5a-dcc8d438cb1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Systems\Graphics\Textures">
+      <UniqueIdentifier>{1d511e01-5c4a-495d-b39e-1a4947a3caf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Systems\Graphics\Scenes">
+      <UniqueIdentifier>{14aa4999-2d7c-427a-b5dc-dc1cd105045a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,6 +51,27 @@
     <ClCompile Include="Framework\Input\Mouse.cpp">
       <Filter>Source\Framework\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Graphics\gl_core_4_3.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Bitmap.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Texture.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Skybox.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\glslprogram.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Camera.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Scene.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Window.h">
@@ -50,5 +83,54 @@
     <ClInclude Include="Framework\Input\Mouse.h">
       <Filter>Source\Framework\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Graphics\gl_core_4_3.hpp">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Bitmap.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Texture.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Skybox.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Scene.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\glslprogram.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Camera.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_b.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_d.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_f.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_l.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_r.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_u.jpg">
+      <Filter>Source\Systems\Graphics\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Systems\Graphics\Shaders\skybox.frag">
+      <Filter>Source\Systems\Graphics\Shaders</Filter>
+    </None>
+    <None Include="Systems\Graphics\Shaders\skybox.vert">
+      <Filter>Source\Systems\Graphics\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

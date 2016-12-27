@@ -1,0 +1,11 @@
+﻿  Bitmap.cpp
+  gl_core_4_3.cpp
+  Skybox.cpp
+  Texture.cpp
+  Window.cpp
+Framework\Graphics\Window.cpp(36): error C2065: 'glewExperimental': undeclared identifier
+Framework\Graphics\Window.cpp(37): error C3861: 'glewInit': identifier not found
+Framework\Graphics\Window.cpp(77): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  Keyboard.cpp
+  Mouse.cpp
+  Main.cpp

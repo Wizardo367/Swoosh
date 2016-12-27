@@ -1,5 +1,7 @@
 #include "Window.h"
 #include <iostream>
+#include <GL/gl.h>
+#include <GL/glew.h>
 
 namespace Swoosh {
 	namespace Framework {
@@ -31,6 +33,13 @@ namespace Swoosh {
 					glfwTerminate(); // Terminates library
 					return;
 				}
+
+				// Initialise GLLoadGen
+				if (gl::sys::LoadFunctions() == nullptr)
+				{
+					std::cerr << "Error: OpenGL loading failed" << "\n";
+					return;
+				}
 			}
 
 			// Destructor
@@ -48,7 +57,7 @@ namespace Swoosh {
 				// Check for error
 				if (!m_Window)
 				{
-					std::cerr << "Error: Window Creation Failed!" << "\n";
+					std::cerr << "Error: Window creation failed!" << "\n";
 					return false;
 				}
 
@@ -60,10 +69,11 @@ namespace Swoosh {
 
 			// Update
 			void Window::update()
-			{
-				glfwPollEvents(); // Get events
-				//glViewport(0, 0, m_Width, m_Height);
-				glfwSwapBuffers(m_Window); // Swap buffers
+			{ 
+				// Get events
+				glfwPollEvents();
+				// Swap buffers
+				glfwSwapBuffers(m_Window); 
 			}
 
 			// Closed
@@ -71,8 +81,7 @@ namespace Swoosh {
 			{
 				return glfwWindowShouldClose(m_Window);
 			}
-
-
+			
 			// Get GLFW window
 			GLFWwindow* Window::getGLFWWindow()
 			{

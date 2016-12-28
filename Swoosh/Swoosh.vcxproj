@@ -136,6 +136,7 @@
     <ClCompile Include="Framework\Input\Keyboard.cpp" />
     <ClCompile Include="Framework\Input\Mouse.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Systems\Graphics\Scenes\RoomScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Bitmap.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Framework\Graphics\Window.h" />
     <ClInclude Include="Framework\Input\Keyboard.h" />
     <ClInclude Include="Framework\Input\Mouse.h" />
+    <ClInclude Include="Systems\Graphics\Scenes\RoomScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_b.jpg" />

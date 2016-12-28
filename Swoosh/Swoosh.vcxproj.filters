@@ -72,6 +72,9 @@
     <ClCompile Include="Framework\Graphics\Scene.cpp">
       <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Systems\Graphics\Scenes\RoomScene.cpp">
+      <Filter>Source\Systems\Graphics\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Window.h">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="Framework\Graphics\Camera.h">
       <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Graphics\Scenes\RoomScene.h">
+      <Filter>Source\Systems\Graphics\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

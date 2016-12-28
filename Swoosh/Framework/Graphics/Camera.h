@@ -39,11 +39,15 @@ public:
 
 	// Properties
 	float getFieldOfView();
-	void setFieldOfView(float value);
+	void setFieldOfView(float fov);
 	float getAspectRatio();
-	void setAspectRatio(float value);
+	void setAspectRatio(float ratio);
 	float getNearPlane();
+	float getFarPlane();
 	void setPlanes(float near, float far);
+
+	glm::mat4 getView();
+	glm::mat4 getProjection();
 
 	// Position, Rotation and Zoom
 	glm::vec3 getPosition();

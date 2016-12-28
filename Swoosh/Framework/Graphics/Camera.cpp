@@ -38,6 +38,69 @@ void Camera::reset()
 	updateView();
 }
 
+// Properties
+
+float Camera::getAspectRatio()
+{
+	return m_AspectRatio;
+}
+
+void Camera::setAspectRatio(float ratio)
+{
+	if (ratio > 0.f)
+		m_AspectRatio = ratio;
+}
+
+float Camera::getFieldOfView()
+{
+	return m_FieldOfView;
+}
+
+void Camera::setFieldOfView(float fov)
+{
+	if (fov > 0.f && fov < 180.f)
+		m_FieldOfView = fov;
+}
+
+float Camera::getNearPlane()
+{
+	return m_NearPlane;
+}
+
+float Camera::getFarPlane()
+{
+	return m_FarPlane;
+}
+
+void Camera::setPlanes(float near, float far)
+{
+	if (near > 0.f)
+		m_NearPlane = near;
+	if (far > near)
+		m_FarPlane = far;
+}
+
+glm::vec3 Camera::getPosition()
+{
+	return m_Position;
+}
+
+void Camera::setPosition(const glm::vec3& position)
+{
+	m_Position = position;
+}
+
+glm::mat4 Camera::getProjection()
+{
+	return m_Projection;
+}
+
+glm::mat4 Camera::getView()
+{
+	return m_View;
+}
+
+// Generate quaternion
 glm::quat Camera::generateQuaternion(glm::vec3 axis, float angle)
 {
 	glm::quat quaternion;

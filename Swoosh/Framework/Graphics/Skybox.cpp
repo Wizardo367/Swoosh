@@ -93,7 +93,7 @@ namespace Swoosh {
 
 				// Bind Arrays
 				gl::EnableVertexAttribArray(0);
-				gl::VertexAttribPointer(0, 3, gl::FLOAT, gl::FALSE_, sizeof(float), nullptr);
+				gl::VertexAttribPointer(0, 3, gl::FLOAT, gl::FALSE_, 0, nullptr);
 				gl::BindVertexArray(0);
 
 				// Texture
@@ -125,7 +125,7 @@ namespace Swoosh {
 				gl::ActiveTexture(gl::TEXTURE0);
 				gl::BindTexture(gl::TEXTURE_CUBE_MAP, m_TexID);
 				gl::BindVertexArray(m_Vao);
-				gl::DrawElements(gl::TRIANGLES, 36, gl::UNSIGNED_INT, 0);
+				gl::DrawElements(gl::TRIANGLES, m_Indices.size(), gl::UNSIGNED_INT, 0);
 				gl::DepthMask(gl::TRUE_);
 			}
 

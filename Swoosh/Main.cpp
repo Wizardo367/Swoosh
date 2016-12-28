@@ -3,6 +3,7 @@
 #include "Framework/Input/Keyboard.h"
 #include "Framework/Input/Mouse.h"
 #include <iostream>
+#include "Systems/Graphics/Scenes/RoomScene.h"
 
 int main()
 {
@@ -11,13 +12,13 @@ int main()
 
 	// Create window
 	Graphics::Window window("OpenGL Robot", 960, 540, false);
-	
-	Graphics::Skybox skybox("../Swoosh/Systems/Graphics/Textures/Skybox/", "TowerHousepano_", 10);
+	RoomScene* room = new RoomScene();
+	Camera camera;
 
 	// Update window
 	while(!window.hasClosed())
 	{
-		skybox.render();
+		room->render(camera);
 
 		window.update();
 	}

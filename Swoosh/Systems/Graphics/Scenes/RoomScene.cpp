@@ -24,7 +24,7 @@ void RoomScene::initialise()
 	gl::Enable(gl::DEPTH_TEST);
 
 	// Create skybox
-	m_Skybox = new Graphics::Skybox("../Swoosh/Systems/Graphics/Textures/Skybox/", "TowerHousepano_", 1);
+	m_Skybox = new Graphics::Skybox("../Swoosh/Systems/Graphics/Textures/Skybox/", "room_", 1);
 }
 
 void RoomScene::render(Camera camera)

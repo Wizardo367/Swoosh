@@ -135,8 +135,10 @@
     <ClCompile Include="Framework\Graphics\Window.cpp" />
     <ClCompile Include="Framework\Input\Keyboard.cpp" />
     <ClCompile Include="Framework\Input\Mouse.cpp" />
+    <ClCompile Include="Game\Resources\Scenes\RoomScene.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Systems\Graphics\Scenes\RoomScene.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ObjFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Bitmap.h" />
@@ -149,19 +151,21 @@
     <ClInclude Include="Framework\Graphics\Window.h" />
     <ClInclude Include="Framework\Input\Keyboard.h" />
     <ClInclude Include="Framework\Input\Mouse.h" />
-    <ClInclude Include="Systems\Graphics\Scenes\RoomScene.h" />
+    <ClInclude Include="Game\Resources\Scenes\RoomScene.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ObjFile.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_b.jpg" />
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_d.jpg" />
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_f.jpg" />
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_l.jpg" />
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_r.jpg" />
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_u.jpg" />
+    <None Include="Game\Resources\Shaders\skybox.frag" />
+    <None Include="Game\Resources\Shaders\skybox.vert" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Systems\Graphics\Shaders\skybox.frag" />
-    <None Include="Systems\Graphics\Shaders\skybox.vert" />
+    <Image Include="Game\Resources\Textures\Skybox\room_b.jpg" />
+    <Image Include="Game\Resources\Textures\Skybox\room_d.jpg" />
+    <Image Include="Game\Resources\Textures\Skybox\room_f.jpg" />
+    <Image Include="Game\Resources\Textures\Skybox\room_l.jpg" />
+    <Image Include="Game\Resources\Textures\Skybox\room_r.jpg" />
+    <Image Include="Game\Resources\Textures\Skybox\room_u.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

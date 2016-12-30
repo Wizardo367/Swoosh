@@ -3,7 +3,7 @@
 #include "Framework/Input/Keyboard.h"
 #include "Framework/Input/Mouse.h"
 #include <iostream>
-#include "Systems/Graphics/Scenes/RoomScene.h"
+#include "Game/Resources/Scenes/RoomScene.h"
 
 int main()
 {

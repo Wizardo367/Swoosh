@@ -22,20 +22,20 @@
     <Filter Include="Source\Systems">
       <UniqueIdentifier>{a8e3f4d9-56e9-4a37-95e5-5d8be96eec30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Messaging">
-      <UniqueIdentifier>{6ce20149-b4c3-4ac0-b8b7-e35323348a3f}</UniqueIdentifier>
+    <Filter Include="Source\Game">
+      <UniqueIdentifier>{ec49512a-38b7-4c95-aa38-876bac200968}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems\Graphics">
-      <UniqueIdentifier>{da94291b-12b8-423b-815f-7fab5872c89c}</UniqueIdentifier>
+    <Filter Include="Source\Game\Resources">
+      <UniqueIdentifier>{72d92dc3-f4ae-4d0d-9348-219640b6f773}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems\Graphics\Shaders">
-      <UniqueIdentifier>{9b6944b0-2f72-4548-8d5a-dcc8d438cb1e}</UniqueIdentifier>
+    <Filter Include="Source\Game\Resources\Scenes">
+      <UniqueIdentifier>{14aa4999-2d7c-427a-b5dc-dc1cd105045a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems\Graphics\Textures">
+    <Filter Include="Source\Game\Resources\Textures">
       <UniqueIdentifier>{1d511e01-5c4a-495d-b39e-1a4947a3caf1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems\Graphics\Scenes">
-      <UniqueIdentifier>{14aa4999-2d7c-427a-b5dc-dc1cd105045a}</UniqueIdentifier>
+    <Filter Include="Source\Game\Resources\Shaders">
+      <UniqueIdentifier>{310aad60-8ab4-495d-b1dd-bfe3d7cef4be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,8 +72,10 @@
     <ClCompile Include="Framework\Graphics\Scene.cpp">
       <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Systems\Graphics\Scenes\RoomScene.cpp">
-      <Filter>Source\Systems\Graphics\Scenes</Filter>
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ObjFile.cpp" />
+    <ClCompile Include="Game\Resources\Scenes\RoomScene.cpp">
+      <Filter>Source\Game\Resources\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,36 +109,38 @@
     <ClInclude Include="Framework\Graphics\Camera.h">
       <Filter>Source\Framework\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Systems\Graphics\Scenes\RoomScene.h">
-      <Filter>Source\Systems\Graphics\Scenes</Filter>
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ObjFile.h" />
+    <ClInclude Include="Game\Resources\Scenes\RoomScene.h">
+      <Filter>Source\Game\Resources\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_b.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_d.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_f.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_l.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_r.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
-    <Image Include="Systems\Graphics\Textures\Skybox\TowerHousepano_u.jpg">
-      <Filter>Source\Systems\Graphics\Textures</Filter>
-    </Image>
+    <None Include="Game\Resources\Shaders\skybox.frag">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Resources\Shaders\skybox.vert">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Systems\Graphics\Shaders\skybox.frag">
-      <Filter>Source\Systems\Graphics\Shaders</Filter>
-    </None>
-    <None Include="Systems\Graphics\Shaders\skybox.vert">
-      <Filter>Source\Systems\Graphics\Shaders</Filter>
-    </None>
+    <Image Include="Game\Resources\Textures\Skybox\room_b.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
+    <Image Include="Game\Resources\Textures\Skybox\room_d.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
+    <Image Include="Game\Resources\Textures\Skybox\room_f.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
+    <Image Include="Game\Resources\Textures\Skybox\room_l.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
+    <Image Include="Game\Resources\Textures\Skybox\room_r.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
+    <Image Include="Game\Resources\Textures\Skybox\room_u.jpg">
+      <Filter>Source\Game\Resources\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

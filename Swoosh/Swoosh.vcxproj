@@ -154,6 +154,7 @@
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ObjFile.h" />
+    <ClInclude Include="TextureLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Game\Resources\Shaders\skybox.frag" />

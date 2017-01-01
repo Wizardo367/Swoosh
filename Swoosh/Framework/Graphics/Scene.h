@@ -3,8 +3,9 @@
 #include "glslprogram.h"
 #include <GLFW/glfw3.h>
 
-#include "Camera.h"
+#include "camera.h"
 #include <vector>
+#include "../Input/Mouse.h"
 
 namespace Swoosh
 {
@@ -17,14 +18,19 @@ namespace Swoosh
 			{
 			protected:
 				glm::mat4 m_ModelMatrix;
+				Input::Mouse m_Mouse;
+				GLFWwindow* m_Window;
+				float m_RotationVelocity;
+				float m_MoveVelocity;
 			public:
-				Scene() {}; // Constructor
+				Scene(GLFWwindow* window); // Constructor
 				// Methods
 				virtual void initialise() = 0;
-				virtual void render(Camera camera) = 0;
+				virtual void render(Camera* camera) = 0;
 				void linkShaders(GLSLProgram* program, std::vector<const char*> paths);
-				virtual void setupLighting(Camera camera) = 0;
-				void setCameraMatrices(GLSLProgram* program, Camera camera);
+				virtual void setupLighting(Camera* camera) = 0;
+				void setCameraMatrices(GLSLProgram* program, Camera* camera);
+				virtual void update(Camera* camera);
 			};
 
 		}

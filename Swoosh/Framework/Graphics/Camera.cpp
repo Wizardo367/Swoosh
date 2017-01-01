@@ -1,9 +1,9 @@
 // QuatCamera from Assignment 1 of IMAT-3111-Y used as reference
 
-#include "Camera.h"
+#include "camera.h"
 
 // Constructor
-Camera::Camera()
+Camera::Camera() : m_WorldXAxis(glm::vec3(1, 0, 0)), m_WorldYAxis(glm::vec3(0, 1, 0)), m_WorldZAxis(glm::vec3(0, 0, 1))
 {
 	reset();
 }
@@ -110,7 +110,7 @@ glm::quat Camera::generateQuaternion(glm::vec3 axis, float angle)
 	const float sine = std::sin(halfAngle);
 
 	quaternion = glm::quat(cosine, sine * axis.x, sine * axis.y, sine * axis.z);
-
+	
 	return quaternion;
 }
 
@@ -127,7 +127,7 @@ void Camera::pan(const float x, const float y)
 {
 	// Offset position
 	m_Position += m_XAxis * x;
-	m_Position += m_YAxis * y;
+	m_Position += m_YAxis * -y;
 	updateView();
 }
 

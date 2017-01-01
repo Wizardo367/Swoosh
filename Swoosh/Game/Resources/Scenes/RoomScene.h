@@ -12,10 +12,10 @@ private:
 	GLSLProgram m_SkyboxProgram;
 	Graphics::Skybox* m_Skybox;
 public:
-	RoomScene();
+	RoomScene(GLFWwindow* window);
 	~RoomScene();
 	// Methods
 	virtual void initialise();
-	virtual void render(Camera camera);
-	virtual void setupLighting(Camera camera);
+	virtual void render(Camera* camera);
+	virtual void setupLighting(Camera* camera);
 };

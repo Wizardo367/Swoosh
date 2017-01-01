@@ -12,14 +12,14 @@ int main()
 
 	// Create window
 	Graphics::Window window("OpenGL Robot", 960, 540, false);
-	RoomScene* room = new RoomScene();
-	Camera camera;
+	RoomScene* room = new RoomScene(window.getGLFWWindow());
+	Camera* camera = new Camera;
 
 	// Update window
 	while(!window.hasClosed())
 	{
+		room->update(camera);
 		room->render(camera);
-
 		window.update();
 	}
 }

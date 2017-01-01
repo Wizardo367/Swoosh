@@ -114,6 +114,9 @@
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h">
       <Filter>Source\Game\Resources\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="TextureLoader.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Game\Resources\Shaders\skybox.frag">

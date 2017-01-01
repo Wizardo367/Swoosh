@@ -1,7 +1,7 @@
 #include "RoomScene.h"
 
 // Constructor
-RoomScene::RoomScene()
+RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 {
 	initialise();
 }
@@ -27,9 +27,8 @@ void RoomScene::initialise()
 	m_Skybox = new Graphics::Skybox("../Swoosh/Game/Resources/Textures/Skybox/", "room_", 1);
 }
 
-void RoomScene::render(Camera camera)
+void RoomScene::render(Camera* camera)
 {
-	// TODO Check if this is needed
 	// Clear buffers
 	gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
@@ -43,7 +42,7 @@ void RoomScene::render(Camera camera)
 	m_Skybox->render();
 }
 
-void RoomScene::setupLighting(Camera camera)
+void RoomScene::setupLighting(Camera* camera)
 {
 	
 }

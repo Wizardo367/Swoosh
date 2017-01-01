@@ -30,6 +30,20 @@ namespace Swoosh {
 				return glfwGetMouseButton(m_Window, button);
 			}
 
+			glm::vec2 Mouse::getDeltaMousePosition()
+			{
+				double posX, posY;
+				glfwGetCursorPos(m_Window, &posX, &posY);
+				// Get delta movement
+				double deltaX, deltaY;
+				deltaX = (m_LastPosX - posX);
+				deltaY = (m_LastPosY - posY);
+				// Store position
+				m_LastPosX = posX;
+				m_LastPosY = posY;
+				return glm::vec2(deltaX, deltaY);
+			}
+
 			bool Mouse::wasButtonClicked(int button)
 			{
 				int state = getButtonState(button);

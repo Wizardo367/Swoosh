@@ -50,7 +50,7 @@ void RoomScene::render(Camera* camera)
 	// Draw
 	m_BedProgram.use();
 	setCameraMatrices(&m_BedProgram, camera);
-	m_Bed->draw(false, false);
+	m_Bed->draw();
 
 	// Skybox
 	m_SkyboxProgram.use();

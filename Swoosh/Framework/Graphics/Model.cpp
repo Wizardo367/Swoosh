@@ -237,6 +237,12 @@ void Model::buffer()
 	gl::BindBuffer(gl::ARRAY_BUFFER, nbo);
 	gl::BufferData(gl::ARRAY_BUFFER, m_vertexNormalTriplets.size() * sizeof(float), m_vertexNormalTriplets.data(), gl::STATIC_DRAW);
 
+	// Buffer UV data
+	GLuint uvbo;
+	gl::GenBuffers(1, &uvbo);
+	gl::BindBuffer(gl::ARRAY_BUFFER, uvbo);
+	gl::BufferData(gl::ARRAY_BUFFER, m_vertexTexturePairs.size() * sizeof(float), m_vertexTexturePairs.data(), gl::STATIC_DRAW);
+
 	// VAO
 	gl::GenVertexArrays(1, &m_Vao);
 	gl::BindVertexArray(m_Vao);
@@ -251,8 +257,10 @@ void Model::buffer()
 	gl::BindBuffer(gl::ARRAY_BUFFER, nbo);
 	gl::VertexAttribPointer(1, 3, gl::FLOAT, gl::FALSE_, 0, nullptr);
 
-	// Texture
-
+	// UVs
+	gl::EnableVertexAttribArray(2);
+	gl::BindBuffer(gl::ARRAY_BUFFER, nbo);
+	gl::VertexAttribPointer(2, 2, gl::FLOAT, gl::FALSE_, 0, nullptr);
 }
 
 void Model::draw()

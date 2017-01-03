@@ -83,13 +83,13 @@ namespace Swoosh {
 				GLuint vbo;
 				gl::GenBuffers(1, &vbo);
 				gl::BindBuffer(gl::ARRAY_BUFFER, vbo);
-				gl::BufferData(gl::ARRAY_BUFFER, m_Vertices.size() * sizeof(float), &m_Vertices[0], gl::STATIC_DRAW);
+				gl::BufferData(gl::ARRAY_BUFFER, m_Vertices.size() * sizeof(float), &m_Vertices, gl::STATIC_DRAW);
 
 				// Buffer index data
 				GLuint ibo;
 				gl::GenBuffers(1, &ibo);
 				gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, ibo);
-				gl::BufferData(gl::ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int), &m_Indices[0], gl::STATIC_DRAW);
+				gl::BufferData(gl::ELEMENT_ARRAY_BUFFER, m_Indices.size() * sizeof(unsigned int), &m_Indices, gl::STATIC_DRAW);
 
 				// Bind Arrays
 				gl::EnableVertexAttribArray(0);
@@ -117,6 +117,8 @@ namespace Swoosh {
 				gl::TexParameterf(gl::TEXTURE_CUBE_MAP, gl::TEXTURE_WRAP_S, gl::CLAMP_TO_EDGE);
 				gl::TexParameterf(gl::TEXTURE_CUBE_MAP, gl::TEXTURE_WRAP_T, gl::CLAMP_TO_EDGE);
 				gl::TexParameterf(gl::TEXTURE_CUBE_MAP, gl::TEXTURE_WRAP_R, gl::CLAMP_TO_EDGE);
+			
+				gl::DisableVertexAttribArray(0);
 			}
 
 			void Skybox::render()

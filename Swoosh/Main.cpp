@@ -4,6 +4,7 @@
 #include "Framework/Input/Mouse.h"
 #include <iostream>
 #include "Game/Resources/Scenes/RoomScene.h"
+#include "Framework/Graphics/ShaderLib.h"
 
 int main()
 {
@@ -12,14 +13,28 @@ int main()
 
 	// Create window
 	Graphics::Window window("OpenGL Robot", 960, 540, false);
+	// Create scene
 	RoomScene* room = new RoomScene(window.getGLFWWindow());
-	Camera* camera = new Camera;
+	
+	// Setup cameras
+	
+	Camera* mainCamera = new Camera;
+	mainCamera->zoom(-10.f);
+
+	Camera* fpCamera = new Camera;
+
+	Camera* currentCamera = mainCamera;
 
 	// Update window
 	while(!window.hasClosed())
 	{
-		room->update(camera);
-		room->render(camera);
+		room->update(currentCamera);
+		room->render(currentCamera);
 		window.update();
 	}
+
+	// Clean-up memory
+	delete room;
+	delete mainCamera;
+	delete fpCamera;
 }

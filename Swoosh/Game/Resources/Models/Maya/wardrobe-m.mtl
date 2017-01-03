@@ -1,49 +1,7 @@
-newmtl Bed_lambert3SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd bed_d2.jpg
-bump bed_n.png -bm 1
-Ni 1.00
-newmtl Lamp_lambert2SG
-illum 4
-Kd 0.62 0.62 0.36
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl Lamp_lambert3SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd lampshade.jpg
-Ni 1.00
-newmtl Wardrobe_lambert2SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd wardrobe.jpg
-Ni 1.00
 newmtl lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd -s 0.02 0.02 room_d.jpg
-Ni 1.00
-newmtl lambert3SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd -s 0.02 0.02 room_l.jpg
-Ni 1.00
-newmtl lambert4SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd -s 0.02 0.02 room_u.jpg
+map_Kd wardrobe.jpg
 Ni 1.00

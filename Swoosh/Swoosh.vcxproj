@@ -129,6 +129,7 @@
     <ClCompile Include="Framework\Graphics\Camera.cpp" />
     <ClCompile Include="Framework\Graphics\glslprogram.cpp" />
     <ClCompile Include="Framework\Graphics\gl_core_4_3.cpp" />
+    <ClCompile Include="Framework\Graphics\Model.cpp" />
     <ClCompile Include="Framework\Graphics\Scene.cpp" />
     <ClCompile Include="Framework\Graphics\Skybox.cpp" />
     <ClCompile Include="Framework\Graphics\Texture.cpp" />
@@ -137,26 +138,26 @@
     <ClCompile Include="Framework\Input\Mouse.cpp" />
     <ClCompile Include="Game\Resources\Scenes\RoomScene.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ObjFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Bitmap.h" />
     <ClInclude Include="Framework\Graphics\Camera.h" />
     <ClInclude Include="Framework\Graphics\glslprogram.h" />
     <ClInclude Include="Framework\Graphics\gl_core_4_3.hpp" />
+    <ClInclude Include="Framework\Graphics\Model.h" />
     <ClInclude Include="Framework\Graphics\Scene.h" />
+    <ClInclude Include="Framework\Graphics\ShaderLib.h" />
     <ClInclude Include="Framework\Graphics\Skybox.h" />
     <ClInclude Include="Framework\Graphics\Texture.h" />
+    <ClInclude Include="Framework\Graphics\TextureLoader.h" />
     <ClInclude Include="Framework\Graphics\Window.h" />
     <ClInclude Include="Framework\Input\Keyboard.h" />
     <ClInclude Include="Framework\Input\Mouse.h" />
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ObjFile.h" />
-    <ClInclude Include="TextureLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Game\Resources\Shaders\bed.frag" />
+    <None Include="Game\Resources\Shaders\bed.vert" />
     <None Include="Game\Resources\Shaders\skybox.frag" />
     <None Include="Game\Resources\Shaders\skybox.vert" />
   </ItemGroup>

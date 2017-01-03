@@ -19,9 +19,6 @@
     <Filter Include="Source\Framework\Input">
       <UniqueIdentifier>{11d90b54-d5ca-4b71-ab11-a64fe4380d1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems">
-      <UniqueIdentifier>{a8e3f4d9-56e9-4a37-95e5-5d8be96eec30}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Game">
       <UniqueIdentifier>{ec49512a-38b7-4c95-aa38-876bac200968}</UniqueIdentifier>
     </Filter>
@@ -72,10 +69,11 @@
     <ClCompile Include="Framework\Graphics\Scene.cpp">
       <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ObjFile.cpp" />
     <ClCompile Include="Game\Resources\Scenes\RoomScene.cpp">
       <Filter>Source\Game\Resources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics\Model.cpp">
+      <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,12 +107,16 @@
     <ClInclude Include="Framework\Graphics\Camera.h">
       <Filter>Source\Framework\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ObjFile.h" />
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h">
       <Filter>Source\Game\Resources\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="TextureLoader.h">
+    <ClInclude Include="Framework\Graphics\Model.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\TextureLoader.h">
+      <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\ShaderLib.h">
       <Filter>Source\Framework\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,6 +125,12 @@
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
     <None Include="Game\Resources\Shaders\skybox.vert">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Resources\Shaders\bed.frag">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Resources\Shaders\bed.vert">
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
   </ItemGroup>

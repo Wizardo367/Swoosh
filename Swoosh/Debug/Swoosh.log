@@ -5,5 +5,7 @@ c:\users\harish bhagat\documents\games programming\year 3\advanced games program
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(77): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(78): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  Model.cpp
+  Generating Code...
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

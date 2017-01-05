@@ -18,12 +18,13 @@ int main()
 	
 	// Setup cameras
 	
-	Camera* mainCamera = new Camera;
-	mainCamera->zoom(-10.f);
+	Camera* topDownCamera = new Camera;
+	//topDownCamera->zoom(-10.f);
+	topDownCamera->setPosition(glm::vec3(0, 25, 0));
 
 	Camera* fpCamera = new Camera;
 
-	Camera* currentCamera = mainCamera;
+	Camera* currentCamera = topDownCamera;
 
 	// Update window
 	while(!window.hasClosed())
@@ -37,6 +38,6 @@ int main()
 
 	// Clean-up memory
 	delete room;
-	delete mainCamera;
+	delete topDownCamera;
 	delete fpCamera;
 }

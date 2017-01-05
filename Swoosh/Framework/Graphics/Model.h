@@ -59,8 +59,15 @@ class Model
 		GLuint m_TexID; // Texture ID
 
 		std::string m_FileName, m_TexturePath;
+
+		// Matrices
+		glm::mat4 m_TranslationMatrix;
+		glm::mat4 m_RotationMatrix;
+		glm::mat4 m_ScaleMatrix;
+		
+		glm::mat4 m_TransformMatrix;
 	public:
-		Model(std::string filename, std::string texturePath, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+		Model(std::string filename, std::string texturePath, glm::vec3 position, float rotationAngle, glm::vec3 rotation, glm::vec3 scale);
 		~Model(void);
 
 		void Model::readModelObjData(std::string filename);
@@ -77,11 +84,15 @@ class Model
 		void buffer();
 		void draw();
 
+		void setPosition(glm::vec3 position);
+		void setRotation(float angle, glm::vec3 rotationAxis);
+		void setScale(glm::vec3 scale);
+
+		void updateTransformationMatrix();
+
 		std::string getName();
 
-		glm::vec3 getPosition();
-		glm::vec3 getRotation();
-		glm::vec3 getScale();
+		glm::mat4 getTransformMatrix();
 
 		std::vector<float>& getVertices();
 		std::vector<float>& getNormals();

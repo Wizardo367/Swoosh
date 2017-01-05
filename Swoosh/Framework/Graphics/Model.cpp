@@ -8,8 +8,9 @@
 #include <sstream>
 #include <iostream>
 #include "Bitmap.h"
+#include <glm/gtc/matrix_transform.inl>
 
-Model::Model(std::string filename, std::string texturePath, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
+Model::Model(std::string filename, std::string texturePath, glm::vec3 position, float rotationAngle, glm::vec3 rotation, glm::vec3 scale)
 {
 	// Initialise variables
 	m_Vao = 0;
@@ -18,10 +19,28 @@ Model::Model(std::string filename, std::string texturePath, glm::vec3 position, 
 
 	readModelObjData(filename);
 
+	// Prevents error
+	glm::vec3 vecErr = glm::vec3();
+	glm::vec3 vecRef = glm::vec3(1);
+
+	if (position == vecErr)
+		position = vecRef;
+	else if (rotation == vecErr)
+		rotation = vecRef;
+	else if (scale == vecErr)
+		scale = vecRef;
+
 	// Set variables
 	m_position = position;
 	m_rotation = rotation;
 	m_scale = scale;
+
+	// Matrices
+	setPosition(m_position);
+	setRotation(rotationAngle, m_rotation);
+	setScale(m_scale);
+
+	updateTransformationMatrix();
 
 	// Expand the data suitable for lDrawArrays()
 	createExpandedVertices();
@@ -281,24 +300,36 @@ void Model::draw()
 	gl::DrawArrays(gl::TRIANGLES, 0, m_vertexTriplets.size());
 }
 
+void Model::setPosition(glm::vec3 position)
+{
+	m_TranslationMatrix = glm::translate(glm::mat4(), position);
+}
+
+void Model::setRotation(float angle, glm::vec3 rotationAxis)
+{
+	m_RotationMatrix = glm::rotate(glm::mat4(), angle, rotationAxis);
+}
+
+void Model::setScale(glm::vec3 scale)
+{
+	m_ScaleMatrix = glm::scale(glm::mat4(), scale);
+}
+
+void Model::updateTransformationMatrix()
+{
+	// Update matrix variable
+	m_TransformMatrix = m_TranslationMatrix * m_RotationMatrix * m_ScaleMatrix;
+}
+
 std::string Model::getName()
 {
 	return m_modelName;
 }
 
-glm::vec3 Model::getPosition()
+glm::mat4 Model::getTransformMatrix()
 {
-	return m_position;
-}
-
-glm::vec3 Model::getRotation()
-{
-	return m_rotation;
-}
-
-glm::vec3 Model::getScale()
-{
-	return m_scale;
+	updateTransformationMatrix();
+	return m_TransformMatrix;
 }
 
 // Get methods give access to the std::vector data

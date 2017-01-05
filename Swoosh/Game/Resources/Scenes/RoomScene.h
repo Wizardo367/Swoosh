@@ -17,9 +17,7 @@ private:
 	// Models
 	Model* m_Bed;
 	Model* m_Chair;
-	Model* m_Rock1;
-	Model* m_Rock2;
-	Model* m_Rock3;
+	std::array<Model*, 3> m_Rocks;
 	Model* m_Table;
 	Model* m_TableLamp;
 	Model* m_Wardrobe;
@@ -30,4 +28,5 @@ public:
 	virtual void initialise();
 	virtual void render(Camera* camera);
 	virtual void setupLighting(Camera* camera);
+	virtual void setupDraw(GLSLProgram* program, Model* object, const char* textureVariable, const char* matrixVariable);
 };

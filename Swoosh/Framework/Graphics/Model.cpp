@@ -7,17 +7,16 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "Bitmap.h"
 
-Model::Model(std::string filename, std::string textureFileName, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
+Model::Model(std::string filename, std::string texturePath, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale)
 {
 	// Initialise variables
 	m_Vao = 0;
+	m_FileName = filename;
+	m_TexturePath = texturePath;
 
 	readModelObjData(filename);
-
-	// Load texture
-	//if (textureFileName != "")
-		//TextureLoader::LoadBMP(textureFileName, m_textureID[0]);
 
 	// Set variables
 	m_position = position;
@@ -259,12 +258,25 @@ void Model::buffer()
 
 	// UVs
 	gl::EnableVertexAttribArray(2);
-	gl::BindBuffer(gl::ARRAY_BUFFER, nbo);
+	gl::BindBuffer(gl::ARRAY_BUFFER, uvbo);
 	gl::VertexAttribPointer(2, 2, gl::FLOAT, gl::FALSE_, 0, nullptr);
+
+	// Texture
+	gl::ActiveTexture(gl::TEXTURE0);
+	gl::GenTextures(1, &m_TexID);
+	gl::BindTexture(gl::TEXTURE_2D, m_TexID);
+
+	Bitmap bmp = Bitmap::bitmapFromFile(m_TexturePath);
+
+	gl::TexImage2D(gl::TEXTURE_2D, 0, gl::RGB, bmp.width(), bmp.height(), 0, gl::RGB, gl::UNSIGNED_BYTE, bmp.pixelBuffer());
+	gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR);
+	gl::TexParameterf(gl::TEXTURE_2D, gl::TEXTURE_MIN_FILTER, gl::LINEAR);
 }
 
 void Model::draw()
 {
+	gl::ActiveTexture(gl::TEXTURE0);
+	gl::BindTexture(gl::TEXTURE_2D, m_TexID);
 	gl::BindVertexArray(m_Vao);
 	gl::DrawArrays(gl::TRIANGLES, 0, m_vertexTriplets.size());
 }
@@ -302,4 +314,9 @@ std::vector<float>& Model::getNormals()
 std::vector<float>& Model::getTextureCoordinates()
 {
 	return m_vertexTexturePairs;
+}
+
+GLuint Model::getTexID()
+{
+	return m_TexID;
 }

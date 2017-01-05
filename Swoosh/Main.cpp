@@ -28,6 +28,8 @@ int main()
 	// Update window
 	while(!window.hasClosed())
 	{
+		// Check keyboard for camera switch
+
 		room->update(currentCamera);
 		room->render(currentCamera);
 		window.update();

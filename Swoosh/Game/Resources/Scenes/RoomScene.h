@@ -11,10 +11,18 @@ class RoomScene : public Graphics::Scene
 private:
 	// Variables
 	GLSLProgram m_SkyboxProgram;
-	GLSLProgram m_BedProgram;
+	GLSLProgram m_ModelProgram;
+
 	Graphics::Skybox* m_Skybox;
 	// Models
 	Model* m_Bed;
+	Model* m_Chair;
+	Model* m_Rock1;
+	Model* m_Rock2;
+	Model* m_Rock3;
+	Model* m_Table;
+	Model* m_TableLamp;
+	Model* m_Wardrobe;
 public:
 	RoomScene(GLFWwindow* window);
 	~RoomScene();

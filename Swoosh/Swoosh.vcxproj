@@ -156,8 +156,8 @@
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Game\Resources\Shaders\bed.frag" />
-    <None Include="Game\Resources\Shaders\bed.vert" />
+    <None Include="Game\Resources\Shaders\model.frag" />
+    <None Include="Game\Resources\Shaders\model.vert" />
     <None Include="Game\Resources\Shaders\skybox.frag" />
     <None Include="Game\Resources\Shaders\skybox.vert" />
   </ItemGroup>

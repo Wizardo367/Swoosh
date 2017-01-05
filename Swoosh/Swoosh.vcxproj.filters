@@ -127,10 +127,10 @@
     <None Include="Game\Resources\Shaders\skybox.vert">
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
-    <None Include="Game\Resources\Shaders\bed.frag">
+    <None Include="Game\Resources\Shaders\model.vert">
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
-    <None Include="Game\Resources\Shaders\bed.vert">
+    <None Include="Game\Resources\Shaders\model.frag">
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
   </ItemGroup>

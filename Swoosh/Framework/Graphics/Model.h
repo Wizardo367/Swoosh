@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <glm/detail/type_vec3.hpp>
+#include <glm/mat4x4.hpp>
 
 class Model
 {
@@ -28,7 +29,7 @@ class Model
 		// char textureData1[256*256*3];
 		// char textureData2[256*256*3];
 		// array of OpenGL texture objects 
-		GLuint m_textureID[2];
+		//GLuint m_textureID[2];
 
 		// f   v/vt/vn  (vt and vn optional)
 		// these are unsigned as opengl expected unsigned data
@@ -55,8 +56,11 @@ class Model
 		std::vector<float> m_vertexTexturePairs;
 
 		GLuint m_Vao; // Vertex Array Object
+		GLuint m_TexID; // Texture ID
+
+		std::string m_FileName, m_TexturePath;
 	public:
-		Model(std::string filename, std::string textureFileName, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+		Model(std::string filename, std::string texturePath, glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
 		~Model(void);
 
 		void Model::readModelObjData(std::string filename);
@@ -82,5 +86,7 @@ class Model
 		std::vector<float>& getVertices();
 		std::vector<float>& getNormals();
 		std::vector<float>& getTextureCoordinates();
+
+		GLuint getTexID();
 };
 

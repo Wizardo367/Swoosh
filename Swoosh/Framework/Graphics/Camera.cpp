@@ -22,14 +22,14 @@ void Camera::reset()
 	m_ZAxis = m_WorldZAxis;
 
 	// Reset position
-	m_Position = glm::vec3(0.f, 0.f, 0.f);
+	m_Position = glm::vec3(0.f, -70.f, 0.f);
 	// Reset orientation
 	m_Orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
 
 	// Reset properties
 	m_FieldOfView = glm::radians(50.0f);
 	m_NearPlane = 0.01f;
-	m_FarPlane = 100.0f;
+	m_FarPlane = 500.0f;
 	m_AspectRatio = 16.f / 9.f;
 
 	// Reset projection

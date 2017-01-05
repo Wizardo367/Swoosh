@@ -36,9 +36,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Graphics\Window.cpp">
       <Filter>Source\Framework\Graphics</Filter>
     </ClCompile>
@@ -74,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="Framework\Graphics\Model.cpp">
       <Filter>Source\Framework\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Main.cpp">
+      <Filter>Source\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="Framework\Graphics\ShaderLib.h">
       <Filter>Source\Framework\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Maths\Angle.h">
+      <Filter>Source\Framework\Maths</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,8 @@ private:
 	// Models
 	Model* m_Bed;
 	Model* m_Chair;
+	Model* m_Door;
+	Model* m_Robot;
 	std::array<Model*, 3> m_Rocks;
 	Model* m_Table;
 	Model* m_TableLamp;

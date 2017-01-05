@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "Window.h"
 
 class Camera
 {
@@ -33,6 +34,9 @@ private:
 	const glm::vec3 m_WorldXAxis;
 	const glm::vec3 m_WorldYAxis;
 	const glm::vec3 m_WorldZAxis;
+
+	// Lock
+	bool m_Locked = false;
 public:
 	Camera(); // Constructor
 	~Camera(); // Destructor
@@ -44,7 +48,7 @@ public:
 	void setAspectRatio(float ratio);
 	float getNearPlane();
 	float getFarPlane();
-	void setPlanes(float near, float far);
+	void setPlanes(float nearPlane, float farPlane);
 
 	glm::mat4 getView();
 	glm::mat4 getProjection();
@@ -52,6 +56,8 @@ public:
 	// Position, Rotation and Zoom
 	glm::vec3 getPosition();
 	void setPosition(const glm::vec3& position);
+
+	void lock(bool lock);
 
 	virtual void rotate(const float yaw, const float pitch);
 	virtual void pan(const float x, const float y);

@@ -1,3 +1,5 @@
 ﻿  Main.cpp
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\main.cpp(33): warning C4244: 'initializing': conversion from 'time_t' to 'double', possible loss of data
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\main.cpp(42): warning C4244: '=': conversion from 'time_t' to 'double', possible loss of data
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

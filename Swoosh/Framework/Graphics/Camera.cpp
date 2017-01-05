@@ -47,7 +47,7 @@ float Camera::getAspectRatio()
 
 void Camera::setAspectRatio(float ratio)
 {
-	if (ratio > 0.f)
+	if (ratio > 0.f && !m_Locked)
 		m_AspectRatio = ratio;
 }
 
@@ -58,7 +58,7 @@ float Camera::getFieldOfView()
 
 void Camera::setFieldOfView(float fov)
 {
-	if (fov > 0.f && fov < 180.f)
+	if (fov > 0.f && fov < 180.f && !m_Locked)
 		m_FieldOfView = fov;
 }
 
@@ -72,12 +72,15 @@ float Camera::getFarPlane()
 	return m_FarPlane;
 }
 
-void Camera::setPlanes(float near, float far)
+void Camera::setPlanes(float nearPlane, float farPlane)
 {
-	if (near > 0.f)
-		m_NearPlane = near;
-	if (far > near)
-		m_FarPlane = far;
+	if (m_Locked)
+		return;
+
+	if (nearPlane > 0.f)
+		m_NearPlane = nearPlane;
+	if (farPlane > nearPlane)
+		m_FarPlane = farPlane;
 }
 
 glm::vec3 Camera::getPosition()
@@ -87,7 +90,11 @@ glm::vec3 Camera::getPosition()
 
 void Camera::setPosition(const glm::vec3& position)
 {
+	if (m_Locked)
+		return;
+
 	m_Position = position;
+	updateView();
 }
 
 glm::mat4 Camera::getProjection()
@@ -110,13 +117,16 @@ glm::quat Camera::generateQuaternion(glm::vec3 axis, float angle)
 	const float sine = std::sin(halfAngle);
 
 	quaternion = glm::quat(cosine, sine * axis.x, sine * axis.y, sine * axis.z);
-	
+
 	return quaternion;
 }
 
 // Rotate
 void Camera::rotate(const float yaw, const float pitch)
 {
+	if (m_Locked)
+		return;
+
 	m_Orientation = glm::normalize(generateQuaternion(m_WorldXAxis, pitch) * m_Orientation); // Rotate pitch (X axis)
 	m_Orientation = glm::normalize(m_Orientation * generateQuaternion(m_WorldYAxis, yaw)); // Rotate yaw (Y axis)
 	updateView();
@@ -125,6 +135,9 @@ void Camera::rotate(const float yaw, const float pitch)
 // Pan
 void Camera::pan(const float x, const float y)
 {
+	if (m_Locked)
+		return;
+
 	// Offset position
 	m_Position += m_XAxis * x;
 	m_Position += m_YAxis * -y;
@@ -134,6 +147,9 @@ void Camera::pan(const float x, const float y)
 // Zoom
 void Camera::zoom(const float z)
 {
+	if (m_Locked)
+		return;
+
 	m_Position -= m_ZAxis * z;
 	updateView();
 }
@@ -153,4 +169,9 @@ void Camera::updateView()
 	m_View[3][0] = -glm::dot(m_XAxis, m_Position);
 	m_View[3][1] = -glm::dot(m_YAxis, m_Position);
 	m_View[3][2] = -glm::dot(m_ZAxis, m_Position);
+}
+
+void Camera::lock(bool lock)
+{
+	m_Locked = lock;
 }

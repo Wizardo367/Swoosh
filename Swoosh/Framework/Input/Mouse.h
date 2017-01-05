@@ -19,6 +19,7 @@ namespace Swoosh {
 				// Variables
 				GLFWwindow* m_Window;
 				double m_LastPosX, m_LastPosY;
+				float m_Scroll;
 			public:
 				// Default constructor
 				Mouse() {};

@@ -9,6 +9,7 @@ namespace Swoosh {
 			{
 				// Variable initialisation
 				m_Window = window;
+			
 			}
 
 			// Destructor
@@ -55,7 +56,6 @@ namespace Swoosh {
 				int state = getButtonState(button);
 				return (state == GLFW_RELEASE);
 			}
-
 		}
 	}
 }

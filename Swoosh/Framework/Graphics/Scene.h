@@ -29,7 +29,7 @@ namespace Swoosh
 				virtual void render(Camera* camera) = 0;
 				virtual void setupLighting(Camera* camera) = 0;
 				void setCameraMatrices(GLSLProgram* program, Camera* camera);
-				virtual void update(Camera* camera);
+				virtual void update(Camera* camera, float deltaTime);
 			};
 
 		}

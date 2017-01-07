@@ -3,8 +3,9 @@
 #include "camera.h"
 
 // Constructor
-Camera::Camera() : m_WorldXAxis(glm::vec3(1, 0, 0)), m_WorldYAxis(glm::vec3(0, 1, 0)), m_WorldZAxis(glm::vec3(0, 0, 1))
+Camera::Camera(const char* id) : m_WorldXAxis(glm::vec3(1, 0, 0)), m_WorldYAxis(glm::vec3(0, 1, 0)), m_WorldZAxis(glm::vec3(0, 0, 1))
 {
+	m_ID = id;
 	reset();
 }
 
@@ -39,6 +40,11 @@ void Camera::reset()
 }
 
 // Properties
+
+const char* Camera::getID()
+{
+	return m_ID;
+}
 
 float Camera::getAspectRatio()
 {

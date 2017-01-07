@@ -12,6 +12,8 @@ class Camera
 {
 private:
 	// Properties
+	const char* m_ID;
+
 	float m_FieldOfView;
 	float m_NearPlane, m_FarPlane;
 	float m_AspectRatio;
@@ -38,10 +40,12 @@ private:
 	// Lock
 	bool m_Locked = false;
 public:
-	Camera(); // Constructor
+	Camera(const char* id); // Constructor
 	~Camera(); // Destructor
 
 	// Properties
+	const char* getID();
+
 	float getFieldOfView();
 	void setFieldOfView(float fov);
 	float getAspectRatio();

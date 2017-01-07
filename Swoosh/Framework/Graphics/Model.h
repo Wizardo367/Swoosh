@@ -6,10 +6,11 @@
 //#include "TextureLoader.h"
 #include "gl_core_4_3.hpp"
 
-#include <string>
 #include <vector>
 #include <glm/detail/type_vec3.hpp>
+#include <glm/detail/type_vec4.hpp>
 #include <glm/mat4x4.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 class Model
 {
@@ -39,6 +40,9 @@ class Model
 
 		std::string m_modelName;
 		glm::vec3 m_position, m_rotation, m_scale;
+		glm::quat m_rotationQuat;
+		float m_LastRotation;
+		float m_CurrentRotation;
 
 		// because maya output indices that don't necessarily match for
 		// faces normals and textures we have two options
@@ -51,7 +55,7 @@ class Model
 		// but which ww can simply pass to open gl in sequence to draw each triangle
 		// in the model
 
-		std::vector<float> m_vertexTriplets;	// v
+		std::vector<float> m_vertexTriplets;
 		std::vector<float> m_vertexNormalTriplets; 
 		std::vector<float> m_vertexTexturePairs;
 
@@ -97,6 +101,12 @@ class Model
 		std::vector<float>& getVertices();
 		std::vector<float>& getNormals();
 		std::vector<float>& getTextureCoordinates();
+
+		glm::vec3 getPosition();
+		float getRotationDifference();
+		float getRotationAngle();
+		glm::quat getRotation();
+		glm::vec3 getScale();
 
 		GLuint getTexID();
 };

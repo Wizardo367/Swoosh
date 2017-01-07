@@ -1,14 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// OpenGL Mathematics Copyright (c) 2005 - 2014 G-Truc Creation (www.g-truc.net)
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Created : 2008-08-31
-// Updated : 2013-08-27
-// Licence : This source is under MIT License
-// File    : test/core/type_vec3.cpp
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#define GLM_FORCE_RADIANS
-#define GLM_SWIZZLE
+#define GLM_FORCE_SWIZZLE
 #include <glm/vector_relational.hpp>
 #include <glm/geometric.hpp>
 #include <glm/vec2.hpp>
@@ -20,8 +10,19 @@
 int test_vec3_ctor()
 {
 	int Error = 0;
-	
-#if(GLM_HAS_INITIALIZER_LISTS)
+
+#	if GLM_HAS_TRIVIAL_QUERIES
+	//	Error += std::is_trivially_default_constructible<glm::vec3>::value ? 0 : 1;
+	//	Error += std::is_trivially_copy_assignable<glm::vec3>::value ? 0 : 1;
+		Error += std::is_trivially_copyable<glm::vec3>::value ? 0 : 1;
+		Error += std::is_trivially_copyable<glm::dvec3>::value ? 0 : 1;
+		Error += std::is_trivially_copyable<glm::ivec3>::value ? 0 : 1;
+		Error += std::is_trivially_copyable<glm::uvec3>::value ? 0 : 1;
+
+		Error += std::is_copy_constructible<glm::vec3>::value ? 0 : 1;
+#	endif
+
+#if (GLM_HAS_INITIALIZER_LISTS)
 	{
 		glm::vec3 a{ 0, 1, 2 };
 		std::vector<glm::vec3> v = {
@@ -38,6 +39,27 @@ int test_vec3_ctor()
 			{8, 9, 0}};
 	}
 #endif
+
+#if(GLM_HAS_UNRESTRICTED_UNIONS && defined(GLM_FORCE_SWIZZLE))
+	{
+		glm::vec3 A = glm::vec3(1.0f, 2.0f, 3.0f);
+		glm::vec3 B = A.xyz;
+		glm::vec3 C(A.xyz);
+		glm::vec3 D(A.xyz());
+		glm::vec3 E(A.x, A.yz);
+		glm::vec3 F(A.x, A.yz());
+		glm::vec3 G(A.xy, A.z);
+		glm::vec3 H(A.xy(), A.z);
+
+		Error += glm::all(glm::equal(A, B)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, C)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, D)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, E)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, F)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, G)) ? 0 : 1;
+		Error += glm::all(glm::equal(A, H)) ? 0 : 1;
+	}
+#endif//(GLM_HAS_UNRESTRICTED_UNIONS && defined(GLM_FORCE_SWIZZLE))
 
 	{
 		glm::vec3 A(1);
@@ -58,6 +80,13 @@ int test_vec3_ctor()
 	}
 		
 	return Error;
+}
+
+float foo()
+{
+	glm::vec3 bar = glm::vec3(0.0f, 1.0f, 1.0f);
+
+	return glm::length(bar);
 }
 
 int test_vec3_operators()
@@ -210,7 +239,9 @@ int test_vec3_size()
 	Error += 24 == sizeof(glm::highp_dvec3) ? 0 : 1;
 	Error += glm::vec3().length() == 3 ? 0 : 1;
 	Error += glm::dvec3().length() == 3 ? 0 : 1;
-	
+	Error += glm::vec3::length() == 3 ? 0 : 1;
+	Error += glm::dvec3::length() == 3 ? 0 : 1;
+
 	return Error;
 }
 
@@ -440,6 +471,9 @@ int test_operator_increment()
 int main()
 {
 	int Error = 0;
+
+	glm::vec3 v;
+	assert(v.length() == 3);
 
 	Error += test_vec3_ctor();
 	Error += test_vec3_operators();

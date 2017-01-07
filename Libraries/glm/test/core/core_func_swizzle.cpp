@@ -1,15 +1,5 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// OpenGL Mathematics Copyright (c) 2005 - 2014 G-Truc Creation (www.g-truc.net)
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// Created : 2011-10-16
-// Updated : 2011-10-16
-// Licence : This source is under MIT License
-// File    : test/core/core_func_swizzle.cpp
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#define GLM_FORCE_RADIANS
-#define GLM_MESSAGES
-#define GLM_SWIZZLE
+#define GLM_FORCE_MESSAGES
+#define GLM_FORCE_SWIZZLE
 #include <glm/glm.hpp>
 
 int test_ivec2_swizzle()
@@ -62,10 +52,11 @@ int test_vec4_swizzle()
 	glm::vec4 B = A.wzyx();
 	glm::vec4 C = B.wzyx();
 
-	float f = glm::dot(C.wzyx(), C.xyzw());
-
 	Error += A != B ? 0 : 1;
 	Error += A == C ? 0 : 1;
+
+	float f = glm::dot(C.wzyx(), C.xyzw());
+	Error += glm::abs(f - 20.f) < 0.01f ? 0 : 1;
 
 	return Error;
 }

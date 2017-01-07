@@ -7,8 +7,8 @@ Swoosh::Framework::Graphics::Scene::Scene(GLFWwindow* window)
 {
 	m_Window = window;
 	m_Mouse = m_Mouse.getInstance(window);
-	m_MoveVelocity = 0.01f;
-	m_RotationVelocity = 0.001f;
+	m_MoveVelocity = 1.25f;
+	m_RotationVelocity = 0.05f;
 }
 
 // Camera matrices setup
@@ -32,7 +32,7 @@ void Swoosh::Framework::Graphics::Scene::setCameraMatrices(GLSLProgram* program,
 	program->setUniform("cameraPosition", cameraPosition);
 }
 
-void Swoosh::Framework::Graphics::Scene::update(Camera* camera)
+void Swoosh::Framework::Graphics::Scene::update(Camera* camera, float deltaTime)
 {
 	// Get delta mouse position
 	glm::vec2 mouseMovement = m_Mouse.getDeltaMousePosition();
@@ -42,12 +42,14 @@ void Swoosh::Framework::Graphics::Scene::update(Camera* camera)
 	// Rotate camera
 	if (m_Mouse.wasButtonClicked(GLFW_MOUSE_BUTTON_LEFT))
 	{
-		camera->rotate(mouseMovement.x * m_RotationVelocity, mouseMovement.y * m_RotationVelocity);
+		float rotation = m_RotationVelocity * deltaTime;
+		camera->rotate(mouseMovement.x * rotation, mouseMovement.y * rotation);
 	}
 
 	// Move camera
 	if (m_Mouse.wasButtonClicked(GLFW_MOUSE_BUTTON_RIGHT))
 	{
-		camera->pan(mouseMovement.x * m_MoveVelocity, mouseMovement.y * m_MoveVelocity);
+		float pan = m_MoveVelocity * deltaTime;
+		camera->pan(mouseMovement.x * pan, mouseMovement.y * pan);
 	}
 }

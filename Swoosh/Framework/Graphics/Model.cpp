@@ -8,7 +8,9 @@
 #include <sstream>
 #include <iostream>
 #include "Bitmap.h"
-#include <glm/gtc/matrix_transform.inl>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
+#include "../Maths/Angle.h"
 
 Model::Model(std::string filename, std::string texturePath, glm::vec3 position, float rotationAngle, glm::vec3 rotation, glm::vec3 scale)
 {
@@ -37,7 +39,7 @@ Model::Model(std::string filename, std::string texturePath, glm::vec3 position, 
 
 	// Matrices
 	setPosition(m_position);
-	setRotation(rotationAngle, m_rotation);
+	setRotation(ang::DEGTORAD(rotationAngle), m_rotation);
 	setScale(m_scale);
 
 	updateTransformationMatrix();
@@ -51,7 +53,7 @@ Model::Model(std::string filename, std::string texturePath, glm::vec3 position, 
 	buffer();
 }
 
-Model::~Model(void)
+Model::~Model()
 {
 }
 
@@ -307,6 +309,8 @@ void Model::setPosition(glm::vec3 position)
 
 void Model::setRotation(float angle, glm::vec3 rotationAxis)
 {
+	m_LastRotation = angle - m_CurrentRotation;
+	m_CurrentRotation = angle;
 	m_RotationMatrix = glm::rotate(glm::mat4(), angle, rotationAxis);
 }
 
@@ -319,6 +323,10 @@ void Model::updateTransformationMatrix()
 {
 	// Update matrix variable
 	m_TransformMatrix = m_TranslationMatrix * m_RotationMatrix * m_ScaleMatrix;
+	// Update properties
+	glm::decompose(m_TransformMatrix, m_scale, m_rotationQuat, m_position, glm::vec3(), glm::vec4());
+	// Fix rotation
+	m_rotationQuat = glm::conjugate(m_rotationQuat);
 }
 
 std::string Model::getName()
@@ -350,4 +358,30 @@ std::vector<float>& Model::getTextureCoordinates()
 GLuint Model::getTexID()
 {
 	return m_TexID;
+}
+
+glm::vec3 Model::getPosition()
+{
+	return m_position;
+}
+
+float Model::getRotationDifference()
+{
+	return m_LastRotation;
+}
+
+float Model::getRotationAngle()
+{
+	ang::NormaliseRad(m_CurrentRotation);
+	return m_CurrentRotation;
+}
+
+glm::quat Model::getRotation()
+{
+	return m_rotation;
+}
+
+glm::vec3 Model::getScale()
+{
+	return m_scale;
 }

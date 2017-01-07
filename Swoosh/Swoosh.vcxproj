@@ -138,6 +138,7 @@
     <ClCompile Include="Framework\Input\Mouse.cpp" />
     <ClCompile Include="Game\Main.cpp" />
     <ClCompile Include="Game\Resources\Scenes\RoomScene.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Bitmap.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Framework\Input\Mouse.h" />
     <ClInclude Include="Framework\Maths\Angle.h" />
     <ClInclude Include="Game\Resources\Scenes\RoomScene.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Game\Resources\Shaders\model.frag" />

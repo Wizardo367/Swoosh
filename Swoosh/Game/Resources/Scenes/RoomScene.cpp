@@ -1,20 +1,23 @@
 #include "RoomScene.h"
 #include "../../../Framework/Graphics/ShaderLib.h"
+#include "../../../Framework/Maths/Angle.h"
 
 // Constructor
 RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 {
 	initialise();
 
+	m_Keyboard = &Input::Keyboard::getInstance(window);
+
 	// Load models
-	m_Bed = new Model("../Swoosh/Game/Resources/Models/bed.obj", "../Swoosh/Game/Resources/Textures/Models/Bed/bed.jpg", glm::vec3(0, -74.911, 36.018), 180, glm::vec3(0, 1, 0), glm::vec3(10));
+	m_Bed = new Model("../Swoosh/Game/Resources/Models/bed.obj", "../Swoosh/Game/Resources/Textures/Models/Bed/bed.jpg", glm::vec3(0, -74.911, 47.144), 180, glm::vec3(0, 1, 0), glm::vec3(10));
 	m_Chair = new Model("../Swoosh/Game/Resources/Models/chair.obj", "../Swoosh/Game/Resources/Textures/Models/Chair/chair.jpg", glm::vec3(25, -68.591, -58.424), 180, glm::vec3(0, 1, 0), glm::vec3(0.8, 0.6, 0.8));
 	m_Door = new Model("../Swoosh/Game/Resources/Models/door.obj", "../Swoosh/Game/Resources/Textures/Models/Door/door.jpg", glm::vec3(-25, -75, -75.1), 0, glm::vec3(), glm::vec3(1));
-	m_Robot = new Model("../Swoosh/Game/Resources/Models/robot.obj", "../Swoosh/Game/Resources/Textures/Models/Robot/robot.jpg", glm::vec3(0, -67.169, 0), 0, glm::vec3(), glm::vec3(0.01));
+	m_Robot = new Model("../Swoosh/Game/Resources/Models/robot.obj", "../Swoosh/Game/Resources/Textures/Models/Robot/robot.jpg", glm::vec3(0, -72, 0), 0, glm::vec3(), glm::vec3(0.01));
 
 	m_Rocks.at(0) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(33.83, -74.752, -68.498), 0, glm::vec3(), glm::vec3(1));
-	m_Rocks.at(1) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(11.775, -68.981, 60.856), 32.621, glm::vec3(0, 1, 0), glm::vec3(0.25));
-	m_Rocks.at(2) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(-66.145, -62.212, -3.451), 0, glm::vec3(), glm::vec3(0.15, 0.1, 0.1));
+	m_Rocks.at(1) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(11.775, -68.981, 71.981), 32.621, glm::vec3(0, 1, 0), glm::vec3(0.25));
+	m_Rocks.at(2) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(-66.145, -68.337, -3.451), 0, glm::vec3(), glm::vec3(0.15, 0.1, 0.1));
 	
 	m_Table = new Model("../Swoosh/Game/Resources/Models/table.obj", "../Swoosh/Game/Resources/Textures/Models/Table/table.jpg", glm::vec3(25, -75, -68), 0, glm::vec3(), glm::vec3(0.15));
 	m_TableLamp = new Model("../Swoosh/Game/Resources/Models/table_lamp.obj", "../Swoosh/Game/Resources/Textures/Models/Table Lamp/table_lamp.jpg", glm::vec3(18.342, -64.05, -70.186), -45, glm::vec3(0, 1, 0), glm::vec3(0.05));
@@ -60,6 +63,81 @@ void RoomScene::initialise()
 
 	// Create skybox
 	m_Skybox = new Graphics::Skybox("../Swoosh/Game/Resources/Textures/Skybox/", "room_", 75);
+}
+
+void RoomScene::update(Camera* camera, float deltaTime)
+{
+	// Base update
+	Scene::update(camera, deltaTime);
+
+	// Check for keyboard input
+	float movementSpeed = 5.f * deltaTime;
+	float robotAngle = m_Robot->getRotationAngle();
+	std::cout << robotAngle << "\n";
+	glm::vec3 movement = glm::vec3(movementSpeed * std::cos(robotAngle), 0, movementSpeed * std::sin(-robotAngle));
+	float rotationIncrement = 3.f * deltaTime;
+
+	bool robotRotated = false;
+	bool robotMoved = false;
+
+	// Rotate robot
+	if (m_Keyboard->wasKeyPressed(GLFW_KEY_A))
+	{
+		m_Robot->setRotation(robotAngle + rotationIncrement, glm::vec3(0, 1, 0));
+		robotRotated = true;
+	}
+	else if (m_Keyboard->wasKeyPressed(GLFW_KEY_D))
+	{
+		m_Robot->setRotation(robotAngle - rotationIncrement, glm::vec3(0, 1, 0));
+		robotRotated = true;
+	}
+
+	// Move robot
+	if (m_Keyboard->wasKeyPressed(GLFW_KEY_W))
+	{
+		m_Robot->setPosition(m_Robot->getPosition() + movement);
+		robotMoved = true;
+	}
+	else if (m_Keyboard->wasKeyPressed(GLFW_KEY_S))
+	{
+		m_Robot->setPosition(m_Robot->getPosition() - movement);
+		robotMoved = true;
+	}
+
+	// Update camera position and rotation
+
+	const char* cameraID = camera->getID();
+	glm::vec3 robotPosition = m_Robot->getPosition();
+
+	if (robotMoved)
+	{
+		robotAngle = -m_Robot->getRotationDifference();
+		float cos = std::cos(robotAngle);
+		float sin = std::sin(robotAngle);
+
+		// Move
+
+		if (cameraID == "follow")
+		{
+			// Rotate
+			float x = (robotPosition.x - 10) * cos - robotPosition.z * sin;
+			float z = (robotPosition.x - 10) * sin + robotPosition.z * cos;
+			camera->setPosition(glm::vec3(x, camera->getPosition().y, z));
+		}
+		else
+			camera->setPosition(glm::vec3(robotPosition.x, camera->getPosition().y, robotPosition.z));
+
+		// Rotate
+
+		if (robotRotated && cameraID == "follow")
+		{
+			camera->rotate(robotAngle * deltaTime, 0);
+		}
+
+	}
+
+	// Update matrix
+	m_Robot->updateTransformationMatrix();
 }
 
 void RoomScene::render(Camera* camera)

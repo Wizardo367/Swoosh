@@ -5,8 +5,7 @@
 // Constructor
 RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 {
-	initialise();
-
+	// Initialise variables
 	m_Keyboard = &Input::Keyboard::getInstance(window);
 
 	// Load models
@@ -22,6 +21,8 @@ RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 	m_Table = new Model("../Swoosh/Game/Resources/Models/table.obj", "../Swoosh/Game/Resources/Textures/Models/Table/table.jpg", glm::vec3(25, -75, -68), 0, glm::vec3(), glm::vec3(0.15));
 	m_TableLamp = new Model("../Swoosh/Game/Resources/Models/table_lamp.obj", "../Swoosh/Game/Resources/Textures/Models/Table Lamp/table_lamp.jpg", glm::vec3(18.342, -64.05, -70.186), -45, glm::vec3(0, 1, 0), glm::vec3(0.05));
 	m_Wardrobe = new Model("../Swoosh/Game/Resources/Models/wardrobe.obj", "../Swoosh/Game/Resources/Textures/Models/Wardrobe/wardrobe.jpg", glm::vec3(-67.726, -75, 0), 90, glm::vec3(0, 1, 0), glm::vec3(2));
+
+	initialise();
 }
 
 // Destructor
@@ -63,6 +64,10 @@ void RoomScene::initialise()
 
 	// Create skybox
 	m_Skybox = new Graphics::Skybox("../Swoosh/Game/Resources/Textures/Skybox/", "room_", 75);
+
+	// Define findable objects
+	for (Model* rock : m_Rocks)
+		m_FindableObjects.push_back(rock);
 }
 
 void RoomScene::update(Camera* camera, float deltaTime)
@@ -70,10 +75,36 @@ void RoomScene::update(Camera* camera, float deltaTime)
 	// Base update
 	Scene::update(camera, deltaTime);
 
+	// Check for proximity to objects
+	
+	const float minProx = 35;
+
+	if (m_FindableObjects.size() != 0)
+	{
+		for (int i = 0; i < m_FindableObjects.size(); i++)
+		{
+			// Get pointer
+			Model* findable = m_FindableObjects.at(i);
+
+			// Get distance
+			glm::vec3 calc = m_Robot->getPosition() - findable->getPosition();
+			float distSquared = glm::dot(calc, calc);
+			if (distSquared < 0) distSquared *= 1;
+			
+			std::cout << distSquared << "\n";
+
+			// Remove object if params are met
+			if (distSquared <= minProx)
+			{
+				m_Rocks.at(i) = nullptr;
+				m_FindableObjects.erase(m_FindableObjects.begin() + i);
+			}
+		}
+	}
+
 	// Check for keyboard input
 	float movementSpeed = 5.f * deltaTime;
 	float robotAngle = m_Robot->getRotationAngle();
-	std::cout << robotAngle << "\n";
 	glm::vec3 movement = glm::vec3(movementSpeed * std::cos(robotAngle), 0, movementSpeed * std::sin(-robotAngle));
 	float rotationIncrement = 3.f * deltaTime;
 
@@ -169,6 +200,9 @@ void RoomScene::render(Camera* camera)
 	for (int i = 0; i < m_Rocks.size(); i++)
 	{
 		Model* rock = m_Rocks.at(i);
+		// Check for null
+		if (rock == nullptr) continue;
+
 		setupDraw(&m_ModelProgram, rock, textureVariable, matrixVariable);
 		rock->draw();
 	}

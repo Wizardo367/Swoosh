@@ -26,6 +26,8 @@ private:
 	Model* m_Table;
 	Model* m_TableLamp;
 	Model* m_Wardrobe;
+
+	std::vector<Model*> m_FindableObjects;
 public:
 	RoomScene(GLFWwindow* window);
 	~RoomScene();

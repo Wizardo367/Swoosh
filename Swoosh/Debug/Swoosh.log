@@ -10,7 +10,7 @@ c:\users\harish bhagat\documents\games programming\year 3\advanced games program
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(21): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(22): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(31): warning C4018: '<': signed/unsigned mismatch
-c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(84): warning C4018: '<': signed/unsigned mismatch
-c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(200): warning C4018: '<': signed/unsigned mismatch
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(89): warning C4018: '<': signed/unsigned mismatch
+c:\users\harish bhagat\documents\games programming\year 3\advanced games programming\coursework\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(202): warning C4018: '<': signed/unsigned mismatch
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
   Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

@@ -18,15 +18,14 @@ void Swoosh::Framework::Graphics::Scene::setCameraMatrices(GLSLProgram* program,
 	mat4 cameraProjection = camera->getProjection();
 	vec3 cameraPosition = camera->getPosition();
 
-	//mat4 mv = cameraView * m_ModelMatrix;
-	//program->setUniform("ModelViewMatrix", mv);
-	//program->setUniform("NormalMatrix",
-		//mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2])));
-	//program->setUniform("MVP", cameraProjection * mv);
+	mat4 mv = cameraView * m_ModelMatrix;
+	program->setUniform("ModelViewMatrix", mv);
 	// Get normal matrix
-	//mat3 normMat = glm::transpose(glm::inverse(mat3(model)));
+	mat3 normMat = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
+	program->setUniform("NormalMatrix", normMat);
+	program->setUniform("MVP", cameraProjection * mv);
+
 	program->setUniform("M", m_ModelMatrix);
-	//prog.setUniform("NormalMatrix", normMat);
 	program->setUniform("V", cameraView);
 	program->setUniform("P", cameraProjection);
 	program->setUniform("cameraPosition", cameraPosition);

@@ -19,7 +19,7 @@ RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 	m_Rocks.at(2) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(-66.145, -68.337, -3.451), 0, glm::vec3(), glm::vec3(0.15, 0.1, 0.1));
 	
 	m_Table = new Model("../Swoosh/Game/Resources/Models/table.obj", "../Swoosh/Game/Resources/Textures/Models/Table/table.jpg", glm::vec3(25, -75, -68), 0, glm::vec3(), glm::vec3(0.15));
-	m_TableLamp = new Model("../Swoosh/Game/Resources/Models/table_lamp.obj", "../Swoosh/Game/Resources/Textures/Models/Table Lamp/table_lamp.jpg", glm::vec3(18.342, -64.05, -70.186), -45, glm::vec3(0, 1, 0), glm::vec3(0.05));
+	m_DeskLamp = new Model("../Swoosh/Game/Resources/Models/table_lamp.obj", "../Swoosh/Game/Resources/Textures/Models/Table Lamp/table_lamp.jpg", glm::vec3(18.342, -64.05, -70.186), -45, glm::vec3(0, 1, 0), glm::vec3(0.05));
 	m_Wardrobe = new Model("../Swoosh/Game/Resources/Models/wardrobe.obj", "../Swoosh/Game/Resources/Textures/Models/Wardrobe/wardrobe.jpg", glm::vec3(-67.726, -75, 0), 90, glm::vec3(0, 1, 0), glm::vec3(2));
 
 	initialise();
@@ -36,7 +36,7 @@ RoomScene::~RoomScene()
 	delete m_Door;
 	delete m_Robot;
 	delete m_Table;
-	delete m_TableLamp;
+	delete m_DeskLamp;
 	delete m_Wardrobe;
 	
 	delete m_Skybox;
@@ -56,8 +56,13 @@ void RoomScene::initialise()
 	std::vector<const char*> modelShaderPaths;
 	modelShaderPaths.push_back("../Swoosh/Game/Resources/Shaders/model.vert");
 	modelShaderPaths.push_back("../Swoosh/Game/Resources/Shaders/model.frag");
-
 	Graphics::Shader::attachShaders(&m_ModelProgram, modelShaderPaths);
+
+	// Lights
+	std::vector<const char*> lightShaderPaths;
+	lightShaderPaths.push_back("../Swoosh/Game/Resources/Shaders/deskLight.vert");
+	lightShaderPaths.push_back("../Swoosh/Game/Resources/Shaders/deskLight.frag");
+	Graphics::Shader::attachShaders(&m_DeskLightProgram, lightShaderPaths);
 
 	// Enable depth testing
 	gl::Enable(gl::DEPTH_TEST);
@@ -146,6 +151,11 @@ void RoomScene::update(Camera* camera, float deltaTime)
 		float cos = std::cos(robotAngle);
 		float sin = std::sin(robotAngle);
 
+		// Rotate
+
+		if (robotRotated && cameraID == "follow")
+			camera->rotate(robotAngle * deltaTime, 0);
+
 		// Move
 
 		if (cameraID == "follow")
@@ -156,15 +166,7 @@ void RoomScene::update(Camera* camera, float deltaTime)
 			camera->setPosition(glm::vec3(x, camera->getPosition().y, z));
 		}
 		else
-			camera->setPosition(glm::vec3(robotPosition.x, camera->getPosition().y, robotPosition.z));
-
-		// Rotate
-
-		if (robotRotated && cameraID == "follow")
-		{
-			camera->rotate(robotAngle * deltaTime, 0);
-		}
-
+			camera->setPosition(glm::vec3(robotPosition.x - 10, camera->getPosition().y, robotPosition.z - 10));
 	}
 
 	// Update matrix
@@ -210,8 +212,8 @@ void RoomScene::render(Camera* camera)
 	setupDraw(&m_ModelProgram, m_Table, textureVariable, matrixVariable);
 	m_Table->draw();
 
-	setupDraw(&m_ModelProgram, m_TableLamp, textureVariable, matrixVariable);
-	m_TableLamp->draw();
+	setupDraw(&m_ModelProgram, m_DeskLamp, textureVariable, matrixVariable);
+	m_DeskLamp->draw();
 
 	setupDraw(&m_ModelProgram, m_Wardrobe, textureVariable, matrixVariable);
 	m_Wardrobe->draw();
@@ -221,11 +223,22 @@ void RoomScene::render(Camera* camera)
 	setCameraMatrices(&m_SkyboxProgram, camera);
 	m_SkyboxProgram.setUniform("skybox", m_Skybox->getTexID());
 	m_Skybox->render();
+
+	// Lights
+	m_DeskLightProgram.use();
+	setCameraMatrices(&m_DeskLightProgram, camera);
+
+	vec4 lightPos = vec4(camera->getPosition(), 1.f);
+	vec4 target = vec4(0.f, 0.f, 0.f, 1.f);
+	mat4 mv = camera->getView() * m_ModelMatrix;
+	m_DeskLightProgram.setUniform("lightDirection", mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2])) * vec3(target - lightPos));
+	m_DeskLightProgram.setUniform("lightPos", mv * lightPos);
+	m_DeskLightProgram.setUniform("eyePos", camera->getPosition());
 }
 
-void RoomScene::setupLighting(Camera* camera)
+void RoomScene::setupLighting(GLSLProgram* program, Camera* camera)
 {
-	
+
 }
 
 void RoomScene::setupDraw(GLSLProgram* program, Model* object, const char* textureVariable, const char* matrixVariable)

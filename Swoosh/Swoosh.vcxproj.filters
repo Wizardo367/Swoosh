@@ -34,7 +34,7 @@
     <Filter Include="Source\Game\Resources\Shaders">
       <UniqueIdentifier>{310aad60-8ab4-495d-b1dd-bfe3d7cef4be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Framework\Utility">
+    <Filter Include="Source\Framework\Utilities">
       <UniqueIdentifier>{3441a2bd-5c42-41f7-935a-ac4dda187996}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -78,7 +78,9 @@
     <ClCompile Include="Game\Main.cpp">
       <Filter>Source\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Framework\Utilities\Timer.cpp">
+      <Filter>Source\Framework\Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Graphics\Window.h">
@@ -126,7 +128,9 @@
     <ClInclude Include="Framework\Maths\Angle.h">
       <Filter>Source\Framework\Maths</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Framework\Utilities\Timer.h">
+      <Filter>Source\Framework\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Game\Resources\Shaders\skybox.frag">
@@ -139,6 +143,12 @@
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
     <None Include="Game\Resources\Shaders\model.frag">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Resources\Shaders\deskLight.frag">
+      <Filter>Source\Game\Resources\Shaders</Filter>
+    </None>
+    <None Include="Game\Resources\Shaders\deskLight.vert">
       <Filter>Source\Game\Resources\Shaders</Filter>
     </None>
   </ItemGroup>

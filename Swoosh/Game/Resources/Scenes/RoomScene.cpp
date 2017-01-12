@@ -1,6 +1,7 @@
 #include "RoomScene.h"
 #include "../../../Framework/Graphics/ShaderLib.h"
 #include "../../../Framework/Maths/Angle.h"
+#include <valarray>
 
 // Constructor
 RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
@@ -17,7 +18,7 @@ RoomScene::RoomScene(GLFWwindow* window) : Scene(window)
 	m_Rocks.at(0) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(33.83, -74.752, -68.498), 0, glm::vec3(), glm::vec3(1));
 	m_Rocks.at(1) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(11.775, -68.981, 71.981), 32.621, glm::vec3(0, 1, 0), glm::vec3(0.25));
 	m_Rocks.at(2) = new Model("../Swoosh/Game/Resources/Models/rock.obj", "../Swoosh/Game/Resources/Textures/Models/Rock/rock.jpg", glm::vec3(-66.145, -68.337, -3.451), 0, glm::vec3(), glm::vec3(0.15, 0.1, 0.1));
-	
+
 	m_Table = new Model("../Swoosh/Game/Resources/Models/table.obj", "../Swoosh/Game/Resources/Textures/Models/Table/table.jpg", glm::vec3(25, -75, -68), 0, glm::vec3(), glm::vec3(0.15));
 	m_DeskLamp = new Model("../Swoosh/Game/Resources/Models/table_lamp.obj", "../Swoosh/Game/Resources/Textures/Models/Table Lamp/table_lamp.jpg", glm::vec3(18.342, -64.05, -70.186), -45, glm::vec3(0, 1, 0), glm::vec3(0.05));
 	m_Wardrobe = new Model("../Swoosh/Game/Resources/Models/wardrobe.obj", "../Swoosh/Game/Resources/Textures/Models/Wardrobe/wardrobe.jpg", glm::vec3(-67.726, -75, 0), 90, glm::vec3(0, 1, 0), glm::vec3(2));
@@ -30,7 +31,7 @@ RoomScene::~RoomScene()
 {
 	for (int i = 0; i < m_Rocks.size(); i++)
 		delete m_Rocks.at(i);
-	
+
 	delete m_Bed;
 	delete m_Chair;
 	delete m_Door;
@@ -38,7 +39,7 @@ RoomScene::~RoomScene()
 	delete m_Table;
 	delete m_DeskLamp;
 	delete m_Wardrobe;
-	
+
 	delete m_Skybox;
 }
 
@@ -81,7 +82,7 @@ void RoomScene::update(Camera* camera, float deltaTime)
 	Scene::update(camera, deltaTime);
 
 	// Check for proximity to objects
-	
+
 	const float minProx = 35;
 
 	if (m_FindableObjects.size() != 0)
@@ -95,7 +96,7 @@ void RoomScene::update(Camera* camera, float deltaTime)
 			glm::vec3 calc = m_Robot->getPosition() - findable->getPosition();
 			float distSquared = glm::dot(calc, calc);
 			if (distSquared < 0) distSquared *= 1;
-			
+
 			std::cout << distSquared << "\n";
 
 			// Remove object if params are met
@@ -144,30 +145,23 @@ void RoomScene::update(Camera* camera, float deltaTime)
 
 	const char* cameraID = camera->getID();
 	glm::vec3 robotPosition = m_Robot->getPosition();
+	glm::vec3 cameraPosition = camera->getPosition();
 
-	if (robotMoved)
+	robotAngle = -m_Robot->getRotationDifference();
+	float cos = std::cos(robotAngle);
+	float sin = std::sin(robotAngle);
+
+	// Rotate
+	if (robotRotated && cameraID == "follow")
 	{
-		robotAngle = -m_Robot->getRotationDifference();
-		float cos = std::cos(robotAngle);
-		float sin = std::sin(robotAngle);
-
-		// Rotate
-
-		if (robotRotated && cameraID == "follow")
-			camera->rotate(robotAngle * deltaTime, 0);
-
-		// Move
-
-		if (cameraID == "follow")
-		{
-			// Rotate
-			float x = (robotPosition.x - 10) * cos - robotPosition.z * sin;
-			float z = (robotPosition.x - 10) * sin + robotPosition.z * cos;
-			camera->setPosition(glm::vec3(x, camera->getPosition().y, z));
-		}
-		else
-			camera->setPosition(glm::vec3(robotPosition.x - 10, camera->getPosition().y, robotPosition.z - 10));
+		camera->rotate(robotAngle, 0);
+		float newX = robotPosition.x + (cameraPosition.x - robotPosition.x) * cos - (cameraPosition.x - robotPosition.x) * sin;
+		float newZ = robotPosition.z + (cameraPosition.z - robotPosition.z) * sin + (cameraPosition.z - robotPosition.z) * cos;
+		m_Robot->setPosition(glm::vec3(newX, robotPosition.y, newZ));
 	}
+
+	// Move
+	camera->setPosition(glm::vec3(robotPosition.x, camera->getPosition().y, robotPosition.z));
 
 	// Update matrix
 	m_Robot->updateTransformationMatrix();

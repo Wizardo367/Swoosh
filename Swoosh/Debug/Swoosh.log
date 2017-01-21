@@ -1,2 +1,56 @@
-﻿  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.exe
-  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Games Programming\Year 3\Advanced Games Programming\Coursework\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)
+﻿  RoomScene.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(71): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(72): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(74): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(77): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(78): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(15): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(21): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(22): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(31): warning C4018: '<': signed/unsigned mismatch
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(89): warning C4018: '<': signed/unsigned mismatch
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\resources\scenes\roomscene.cpp(195): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\main.cpp(35): warning C4244: 'initializing': conversion from 'time_t' to 'double', possible loss of data
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\game\main.cpp(49): warning C4244: '=': conversion from 'time_t' to 'double', possible loss of data
+  Timer.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\utilities\timer.cpp(17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\utilities\timer.cpp(22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\utilities\timer.cpp(23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Mouse.cpp
+  Keyboard.cpp
+  Window.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\window.cpp(82): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  Texture.cpp
+  Skybox.cpp
+  Scene.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(71): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(72): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(74): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(77): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(78): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  Model.cpp
+  gl_core_4_3.cpp
+  glslprogram.cpp
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(71): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(72): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(74): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(76): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(77): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.h(78): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(57): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(94): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(126): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(174): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(206): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\harish bhagat\documents\basic game engine\swoosh\swoosh\framework\graphics\glslprogram.cpp(399): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  Camera.cpp
+  Bitmap.cpp
+  Generating Code...
+  LINK : C:\Users\Harish Bhagat\Documents\Basic Game Engine\Swoosh\Debug\Swoosh.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Basic Game Engine\Swoosh\Debug\Swoosh.exe
+  Swoosh.vcxproj -> C:\Users\Harish Bhagat\Documents\Basic Game Engine\Swoosh\Debug\Swoosh.pdb (Partial PDB)

@@ -73,8 +73,8 @@
     <LibraryPath>..\..\Swoosh\Libraries\glfw-3.2.1\lib-vc2015\;..\..\Swoosh\Libraries\glew-2.0.0\lib\Release\Win32\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\Swoosh\Libraries\glfw-3.2.1\include\;..\..\Swoosh\Libraries\glm\;..\..\Swoosh\Libraries\stb_image\stb_image\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\Swoosh\Libraries\glfw-3.2.1\lib-vc2015\;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\Swoosh\Libraries\glfw-3.2.1\include\;..\..\Swoosh\Libraries\glew-2.0.0\include\;..\..\Swoosh\Libraries\glm\;..\..\Swoosh\Libraries\stb_image\stb_image\;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\Swoosh\Libraries\glfw-3.2.1\lib-vc2015\;..\..\Swoosh\Libraries\glew-2.0.0\lib\Release\Win32\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

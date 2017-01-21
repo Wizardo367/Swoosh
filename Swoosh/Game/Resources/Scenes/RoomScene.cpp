@@ -1,6 +1,5 @@
 #include "RoomScene.h"
 #include "../../../Framework/Graphics/ShaderLib.h"
-#include "../../../Framework/Maths/Angle.h"
 #include <valarray>
 
 // Constructor

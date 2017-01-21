@@ -85,7 +85,7 @@
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>/NODEFAULTLIB:library</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/NODEFAULTLIB:MSVCRT</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
